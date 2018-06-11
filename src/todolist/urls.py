@@ -20,9 +20,14 @@ from django.conf.urls.static import static
 
 from django.views.generic import TemplateView
 
+from todos.views import (
+    TodosListView,
+)
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', TemplateView.as_view(template_name='home.html')),
+    # url(r'^$', TemplateView.as_view(template_name='home.html')),
+    url(r'^$', TodosListView.as_view()),
 ]
 
 if settings.DEBUG:
