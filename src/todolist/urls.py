@@ -22,12 +22,14 @@ from django.views.generic import TemplateView
 
 from todos.views import (
     TodosListView,
+    TodosCreateView,
 )
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     # url(r'^$', TemplateView.as_view(template_name='home.html')),
     url(r'^$', TodosListView.as_view()),
+    url(r'^add/$', TodosCreateView.as_view()),
 ]
 
 if settings.DEBUG:

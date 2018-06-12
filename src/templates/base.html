@@ -11,8 +11,16 @@
     <div class="grid-container">
         <div class="grid-header shadow">
             <h4>ToDoList</h4>
+            <!-- Colored FAB button with ripple -->
+            <a href="/add/">
+                <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored add-entry-button shadow">
+                    <i class="material-icons">add</i>
+                </button>
+            </a>
         </div>
-        {% block content %}{% endblock content %}
+        <div class="grid-main shadow">
+            {% block content %}{% endblock content %}
+        </div>
     </div>
     {% include 'snippets/js.html' %}
 </body>
