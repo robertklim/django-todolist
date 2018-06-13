@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.views.generic import ListView, CreateView
 from .models import Todos
@@ -8,8 +10,9 @@ from .forms import TodosCreateForm
 class TodosListView(ListView):
     queryset = Todos.objects.all()
 
-class TodosCreateView(CreateView):
+class TodosCreateView(LoginRequiredMixin, CreateView):
     form_class = TodosCreateForm
+    login_url = '/login/' # Default can also be set in settings as LOGIN_URL = '/login/'
     template_name = "todos/add.html"
     success_url = "/"
 
