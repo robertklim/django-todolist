@@ -12,3 +12,9 @@ class TodosCreateView(CreateView):
     form_class = TodosCreateForm
     template_name = "todos/add.html"
     success_url = "/"
+
+    def form_valid(self, form):
+        instance = form.save(commit=False)
+        # Now I can customize form
+        instance.user = self.request.user
+        return super(TodosCreateView, self).form_valid(form)
