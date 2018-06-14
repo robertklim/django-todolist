@@ -14,9 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
-from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib import admin
+from django.contrib.auth.views import (
+    LoginView, 
+    PasswordResetView, 
+    PasswordResetConfirmView,
+    PasswordResetDoneView,
+) 
 
 from django.views.generic import TemplateView
 
@@ -30,6 +36,10 @@ urlpatterns = [
     # url(r'^$', TemplateView.as_view(template_name='home.html')),
     url(r'^$', TodosListView.as_view()),
     url(r'^add/$', TodosCreateView.as_view()),
+    url(r'^login/$', LoginView.as_view(), name='login'),
+    url(r'^password_reset/$', PasswordResetView.as_view(), name='password_reset'),
+    url(r'^password_reset_confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)$', PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
+    url(r'^password_reset_done/$', PasswordResetDoneView.as_view(), name='password_reset_done'),
 ]
 
 if settings.DEBUG:
