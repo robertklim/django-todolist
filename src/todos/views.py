@@ -17,7 +17,7 @@ class TodosCreateView(LoginRequiredMixin, CreateView):
     form_class = TodosCreateForm
     login_url = '/login/' # Default can also be set in settings as LOGIN_URL = '/login/'
     template_name = "todos/add.html"
-    success_url = "/"
+    # success_url = "/"
 
     def form_valid(self, form):
         instance = form.save(commit=False)

@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.db import models
+from django.core.urlresolvers import reverse
 from .validators import validate_expires
 
 # Create your models here.
@@ -16,3 +17,7 @@ class Todos(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        # return f'/todo/{self.pk}'
+        return reverse('todo', kwargs={'pk': self.pk})

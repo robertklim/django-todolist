@@ -8,7 +8,9 @@
                 <span class="mdl-list__item-primary-content">
                     <i class="material-icons mdl-list__item-avatar">drag_indicator</i>
                     <span>
-                        <a href="/todo/{{ obj.pk }}">{{ obj.title }}</a>
+                        {# <a href="{% url 'todo' pk=obj.pk %}">{{ obj.title }}</a> #}
+                        {# <a href="{% url 'todo' pk=obj.pk %}">{{ obj.title }}</a> #}
+                        <a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a>
                         {% if obj.expires %}
                             (expires: {{ obj.expires }})
                         {% endif %}
