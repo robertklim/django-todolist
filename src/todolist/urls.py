@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
@@ -34,10 +34,11 @@ from todos.views import (
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^todos/', include('todos.urls')),
     # url(r'^$', TemplateView.as_view(template_name='home.html')),
-    url(r'^$', TodosListView.as_view(), name='home'),
-    url(r'^todo/(?P<pk>\w+)/$', TodosDetailView.as_view(), name='todo'),
-    url(r'^add/$', TodosCreateView.as_view(), name='add'),
+    # url(r'^$', TodosListView.as_view(), name='home'),
+    # url(r'^todos/todo/(?P<pk>\w+)/$', TodosDetailView.as_view(), name='todo'),
+    # url(r'^todos/add/$', TodosCreateView.as_view(), name='add'),
     url(r'^login/$', LoginView.as_view(), name='login'),
     url(r'^password_reset/$', PasswordResetView.as_view(), name='password_reset'),
     url(r'^password_reset_confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)$', PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
