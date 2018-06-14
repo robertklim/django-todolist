@@ -34,8 +34,8 @@ from todos.views import (
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     # url(r'^$', TemplateView.as_view(template_name='home.html')),
-    url(r'^$', TodosListView.as_view()),
-    url(r'^add/$', TodosCreateView.as_view()),
+    url(r'^$', TodosListView.as_view(), name='home'),
+    url(r'^add/$', TodosCreateView.as_view(), name='add'),
     url(r'^login/$', LoginView.as_view(), name='login'),
     url(r'^password_reset/$', PasswordResetView.as_view(), name='password_reset'),
     url(r'^password_reset_confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)$', PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
