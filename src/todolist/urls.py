@@ -29,12 +29,14 @@ from django.views.generic import TemplateView
 from todos.views import (
     TodosListView,
     TodosCreateView,
+    TodosDetailView,
 )
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     # url(r'^$', TemplateView.as_view(template_name='home.html')),
     url(r'^$', TodosListView.as_view(), name='home'),
+    url(r'^todo/(?P<pk>\w+)/$', TodosDetailView.as_view(), name='todo'),
     url(r'^add/$', TodosCreateView.as_view(), name='add'),
     url(r'^login/$', LoginView.as_view(), name='login'),
     url(r'^password_reset/$', PasswordResetView.as_view(), name='password_reset'),
