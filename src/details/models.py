@@ -10,8 +10,8 @@ class Details(models.Model):
     user        = models.ForeignKey(settings.AUTH_USER_MODEL)
     todo        = models.ForeignKey(Todos)
     # details data
-    keywords    = models.TextField(help_text='Separete each bo comma')
-    description = models.TextField(blank=True, null=True, help_text='Separete each bo comma')
+    keywords    = models.TextField(help_text='Separete each by comma')
+    description = models.TextField(blank=True, null=True)
     public      = models.BooleanField(default=True)
     timestamp   = models.DateField(auto_now_add=True)
     updated     = models.DateField(auto_now=True)
@@ -19,3 +19,6 @@ class Details(models.Model):
     # Default ordering
     class Meta:
         ordering = ['-updated', '-timestamp']
+
+    def get_keywords(self):
+        return self.keywords.split(', ')
