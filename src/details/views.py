@@ -40,6 +40,11 @@ class DetailsUpdateView(LoginRequiredMixin, UpdateView):
     form_class = DetailsCreateForm
     login_url = '/login/' # Default can also be set in settings as LOGIN_URL = '/login/'
     template_name = "details/update.html"
+
+    def get_form_kwargs(self):
+        kwargs = super(DetailsUpdateView, self).get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
     
     def get_queryset(self):
         return Details.objects.filter(user=self.request.user)
