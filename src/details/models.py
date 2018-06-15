@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.db import models
+from django.core.urlresolvers import reverse
 
 from todos.models import Todos
 
@@ -15,6 +16,10 @@ class Details(models.Model):
     public      = models.BooleanField(default=True)
     timestamp   = models.DateField(auto_now_add=True)
     updated     = models.DateField(auto_now=True)
+
+    def get_absolute_url(self):
+        # return f'/todo/{self.pk}'
+        return reverse('details:details', kwargs={'pk': self.pk})
 
     # Default ordering
     class Meta:

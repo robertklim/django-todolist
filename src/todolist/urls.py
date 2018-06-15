@@ -34,6 +34,7 @@ from todos.views import (
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^details/', include('details.urls', namespace='details')),
     url(r'^todos/', include('todos.urls', namespace='todos')),
     # url(r'^$', TemplateView.as_view(template_name='home.html')),
     # url(r'^$', TodosListView.as_view(), name='home'),

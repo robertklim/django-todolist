@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if form.errors.non_field_errors %}
+        {{ form.errors.non_field_errors }}
+    {% endif %}
+    <form method="POST"> {% csrf_token %}
+        {{ form.as_p }}
+        <!-- Accent-colored raised button with ripple -->
+        <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+            Submit
+        </button>
+    </form>
+{% endblock %}

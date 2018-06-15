@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <ul class="demo-list-control mdl-list">
+        <!-- List with avatar and controls -->
+        <li class="mdl-list__item mdl-list__item--three-line">
+            <span class="mdl-list__item-primary-content">
+                <i class="material-icons mdl-list__item-avatar">drag_indicator</i>
+                <span>
+                    {{ object.todo }} details
+                </span>
+                <span class="mdl-list__item-text-body">
+                    {% if object.description %}
+                        Description: {{ object.description }} <br>
+                    {% endif %}
+                        Keywords: 
+                    {% for keyword in object.get_keywords %}
+                        {{ keyword }} | 
+                    {% endfor %} <br>
+                    user: {{ object.user }} | 
+                    timestamp: {{ object.timestamp }} | 
+                    updated: {{ object.updated }}
+                </span>
+            </span>
+            <span class="mdl-list__item-secondary-action">
+            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="list-checkbox-{{obj.id}}">
+                <input type="checkbox" id="list-checkbox-{{obj.id}}" class="mdl-checkbox__input" />
+            </label>
+            </span>
+        </li>
+    </ul>
+{% endblock %}
