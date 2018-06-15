@@ -21,6 +21,11 @@ class DetailsCreateView(LoginRequiredMixin, CreateView):
     form_class = DetailsCreateForm
     login_url = '/login/' # Default can also be set in settings as LOGIN_URL = '/login/'
     template_name = "details/add.html"
+
+    def get_form_kwargs(self):
+        kwargs = super(DetailsCreateView, self).get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
     
     def get_queryset(self):
         return Details.objects.filter(user=self.request.user)
@@ -31,7 +36,7 @@ class DetailsCreateView(LoginRequiredMixin, CreateView):
         instance.user = self.request.user
         return super(DetailsCreateView, self).form_valid(form)
 
-class DetailsUpdateView(UpdateView):
+class DetailsUpdateView(LoginRequiredMixin, UpdateView):
     form_class = DetailsCreateForm
     login_url = '/login/' # Default can also be set in settings as LOGIN_URL = '/login/'
     template_name = "details/update.html"
