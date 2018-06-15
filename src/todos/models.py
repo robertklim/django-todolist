@@ -20,4 +20,4 @@ class Todos(models.Model):
 
     def get_absolute_url(self):
         # return f'/todo/{self.pk}'
-        return reverse('todo', kwargs={'pk': self.pk})
+        return reverse('todos:todo', kwargs={'pk': self.pk})
