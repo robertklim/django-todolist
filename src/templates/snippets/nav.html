@@ -4,9 +4,11 @@
             <i class="material-icons">home</i>
         </button>
     </a>
-    <a href="{% url 'todos:add' %}">
-        <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored shadow">
-            <i class="material-icons">add</i>
-        </button>
-    </a>
+    {% if request.user.is_authenticated %}
+        <a href="{% url 'todos:add' %}">
+            <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored shadow">
+                <i class="material-icons">add</i>
+            </button>
+        </a>
+    {% endif %}
 </div>
