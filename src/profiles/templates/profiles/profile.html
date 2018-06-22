@@ -1,5 +1,43 @@
 {% extends "base.html" %}
 
 {% block content %}
-    User profile page: {{ user.username }}
+    <h4>User profile: {{ user.username }}</h4>
+
+    <ul class="demo-list-control mdl-list">
+            {% for todo in user.todos_set.all %}
+                <!-- List with avatar and controls -->
+                <li class="mdl-list__item mdl-list__item--three-line">
+                    <span class="mdl-list__item-primary-content">
+                        <i class="material-icons mdl-list__item-avatar">drag_indicator</i>
+                        <span>
+                            <a href="{{ todo.get_absolute_url }}">{{ todo.title }}</a>
+                            {% if todo.expires %}
+                                <small>
+                                    (expires: {{ todo.expires }})
+                                </small>
+                            {% endif %}
+                            <small>
+                                <a href="{{ todo.get_absolute_url }}update/">
+                                    edit
+                                </a>
+                            </small>
+                        </span>
+                        <span class="mdl-list__item-text-body">
+                            {{ todo.entry }} <br>
+                            <small>
+                                {% for detail in todo.details_set.all %}
+                                    <a href="{{ detail.get_absolute_url }}">details</a>: {{ detail.keywords }}
+                                {% endfor %}
+                            </small>
+                        </span>
+                    </span>
+                    <span class="mdl-list__item-secondary-action">
+                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="list-checkbox-{{todo.id}}">
+                        <input type="checkbox" id="list-checkbox-{{todo.id}}" class="mdl-checkbox__input" />
+                    </label>
+                    </span>
+                </li>
+            {% endfor %}
+        </ul>
+
 {% endblock %}
