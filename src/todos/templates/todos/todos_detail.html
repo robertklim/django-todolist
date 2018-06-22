@@ -9,13 +9,20 @@
                 <span>
                     {{ object.title }}
                     {% if object.expires %}
-                        (expires: {{ object.expires }})
+                        <small>
+                            (expires: {{ object.expires }})
+                        </small>
                     {% endif %}
+                    <small>
+                        <a href="{{ object.get_absolute_url }}update/">
+                            edit
+                        </a>
+                    </small>
                 </span>
                 <span class="mdl-list__item-text-body">
                     {{ object.entry }}<br>
                     user: {{ object.user }} | 
-                    timestamp: {{ object.timestamp }} | 
+                    created: {{ object.timestamp }} | 
                     updated: {{ object.updated }}
                 </span>
             </span>

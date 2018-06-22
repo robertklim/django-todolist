@@ -12,8 +12,15 @@
                         {# <a href="{% url 'todo' pk=obj.pk %}">{{ obj.title }}</a> #}
                         <a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a>
                         {% if obj.expires %}
-                            (expires: {{ obj.expires }})
+                            <small>
+                                (expires: {{ obj.expires }})
+                            </small>
                         {% endif %}
+                        <small>
+                            <a href="{{ obj.get_absolute_url }}update/">
+                                edit
+                            </a>
+                        </small>
                     </span>
                     <span class="mdl-list__item-text-body">
                         {{ obj.entry }}
