@@ -22,20 +22,21 @@ from django.contrib.auth.views import (
     PasswordResetView, 
     PasswordResetConfirmView,
     PasswordResetDoneView,
-) 
-
-from django.views.generic import TemplateView
-
-from todos.views import (
-    TodosListView,
-    TodosCreateView,
-    TodosDetailView,
 )
+
+# from django.views.generic import TemplateView
+
+# from todos.views import (
+#     TodosListView,
+#     TodosCreateView,
+#     TodosDetailView,
+# )
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^details/', include('details.urls', namespace='details')),
     url(r'^todos/', include('todos.urls', namespace='todos')),
+    url(r'^profiles/', include('profiles.urls', namespace='profiles')),
     # url(r'^$', TemplateView.as_view(template_name='home.html')),
     # url(r'^$', TodosListView.as_view(), name='home'),
     # url(r'^todos/todo/(?P<pk>\w+)/$', TodosDetailView.as_view(), name='todo'),
