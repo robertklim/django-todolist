@@ -27,3 +27,6 @@ class Details(models.Model):
 
     def get_keywords(self):
         return self.keywords.split(', ')
+
+    def __str__(self):
+        return self.todo.title + " details"
