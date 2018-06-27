@@ -24,6 +24,8 @@ from django.contrib.auth.views import (
     PasswordResetDoneView,
 )
 
+from profiles.views import ProfileFollowToggle
+
 # from django.views.generic import TemplateView
 
 # from todos.views import (
@@ -36,6 +38,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^details/', include('details.urls', namespace='details')),
     url(r'^todos/', include('todos.urls', namespace='todos')),
+    url(r'^follow/$', ProfileFollowToggle.as_view(), name='follow'),
     url(r'^profiles/', include('profiles.urls', namespace='profiles')),
     # url(r'^$', TemplateView.as_view(template_name='home.html')),
     # url(r'^$', TodosListView.as_view(), name='home'),

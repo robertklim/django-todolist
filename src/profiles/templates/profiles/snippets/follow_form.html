@@ -1,0 +1,12 @@
+{% if request.user.is_authenticated %}
+    <form action="{% url 'follow' %}" class="form" method="POST"> {% csrf_token %}
+        <input type="hidden" name="username" value="{% if username %}{{ username }}{%else%}root{% endif %}" />
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit">
+            {% if is_following %}
+                Unfollow
+            {% else %}
+                Follow
+            {% endif %}
+        </button>
+    </form>
+{% endif %}
