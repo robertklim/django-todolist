@@ -7,12 +7,12 @@ from .models import Details
 
 # Create your views here.
 
-class DetailsListView(ListView):
+class DetailsListView(LoginRequiredMixin, ListView):
     
     def get_queryset(self):
         return Details.objects.filter(user=self.request.user)
 
-class DetailsDetailView(DetailView):
+class DetailsDetailView(LoginRequiredMixin, DetailView):
    
     def get_queryset(self):
         return Details.objects.filter(user=self.request.user)
