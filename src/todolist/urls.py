@@ -18,13 +18,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth.views import (
-    LoginView, 
+    LoginView,
+    LogoutView, 
     PasswordResetView, 
     PasswordResetConfirmView,
     PasswordResetDoneView,
 )
 
-from profiles.views import ProfileFollowToggle
+from profiles.views import ProfileFollowToggle, RegisterView
 
 # from django.views.generic import TemplateView
 
@@ -45,7 +46,9 @@ urlpatterns = [
     # url(r'^$', TodosListView.as_view(), name='home'),
     # url(r'^todos/todo/(?P<pk>\w+)/$', TodosDetailView.as_view(), name='todo'),
     # url(r'^todos/add/$', TodosCreateView.as_view(), name='add'),
-    url(r'^accounts/login/$', LoginView.as_view(), name='login'),
+    url(r'^login/$', LoginView.as_view(), name='login'),
+    url(r'^logout/$', LogoutView.as_view(), name='logout'),
+    url(r'^register/$', RegisterView.as_view(), name='register'),
     url(r'^password_reset/$', PasswordResetView.as_view(), name='password_reset'),
     url(r'^password_reset_confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)$', PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     url(r'^password_reset_done/$', PasswordResetDoneView.as_view(), name='password_reset_done'),
