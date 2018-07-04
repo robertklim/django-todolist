@@ -27,6 +27,19 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Email config
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'user@email.com'
+EMAIL_HOST_PASSWORD = 'secret'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'ToDoList <user@email.com>'
+
+ADMINS = (
+    ('Admin', 'user@email.com'),
+)
+MANAGERS = ADMINS
 
 # Application definition
 
